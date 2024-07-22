@@ -195,56 +195,126 @@ const Profile = () => {
               {/* ... Other content ... */}
             </div>
             <div className="col-lg-8">
-              <div className="card mb-4" style={{ height: "31.8rem" }}>
+              <div
+                className="card mb-4 shadow-sm profile-card"
+                style={{ height: "31.8rem" }}
+              >
                 <div className="card-body">
-                  <p>
-                    <h6>
-                      Name:&nbsp;{profiledata.firstname}&nbsp;
-                      {profiledata.lastname}{" "}
-                    </h6>
-                    <br />
-                    <h6>Username: &nbsp;{profiledata.userName}</h6>
-                    <br />
-
-                    <h6 className="toUppercase">
-                      Role: &nbsp;{profiledata.role}
-                    </h6>
-                    <br />
-                    <h6 className="toUppercase">
-                      {" "}
-                      Live Balance: &nbsp;{parseInt(balance.LiveBalance)}
-                    </h6>
-                    <br />
-                    <h6 className="toUppercase">
-                      {" "}
-                      Payment Done Lifetime: &nbsp;
-                      {parseInt(profiledata.balance)}
-                    </h6>
-                    <br />
-                    <h6 className="toUppercase">
-                      {" "}
-                      Current Due: &nbsp;{parseInt(profiledata.currentDue)}
-                    </h6>
-                    <br />
-                    <h6>
-                      Password: &nbsp; ********{" "}
-                      <img
-                        src={Editicon}
-                        style={{ width: "25px" }}
-                        onClick={handelresetpass}
-                        title="Reset"
-                        onMouseOver={(e) => {
-                          e.currentTarget.style.transform = "scale(1.4)";
-                        }}
-                        onMouseOut={(e) => {
-                          e.currentTarget.style.transform = "scale(1)";
-                        }}
-                      />
-                    </h6>
-                  </p>
+                  <table className="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <th scope="row" className="text-primary">
+                          <i className="fas fa-user"></i> Name
+                        </th>
+                        <td>
+                          {profiledata.firstname} {profiledata.lastname}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row" className="text-primary">
+                          <i className="fas fa-user-tag"></i> Username
+                        </th>
+                        <td>{profiledata.userName}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row" className="text-primary">
+                          <i className="fas fa-user-shield"></i> Role
+                        </th>
+                        <td className="text-uppercase">{profiledata.role}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row" className="text-primary">
+                          <i className="fas fa-wallet"></i> Live Balance
+                        </th>
+                        <td className="text-uppercase">
+                          {parseInt(balance.LiveBalance).toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row" className="text-primary">
+                          <i className="fas fa-hand-holding-usd"></i>
+                          Lifetime Payment
+                        </th>
+                        <td className="text-uppercase">
+                          {parseInt(profiledata.balance).toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row" className="text-primary">
+                          <i className="fas fa-money-bill-wave"></i> Current
+                          Due
+                        </th>
+                        <td className="text-uppercase">
+                          {parseInt(profiledata.currentDue).toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row" className="text-primary">
+                          <i className="fas fa-key"></i> Password
+                        </th>
+                        <td>
+                          ********
+                          <img
+                            src={Editicon}
+                            alt="Edit icon"
+                            style={{
+                              width: "25px",
+                              cursor: "pointer",
+                              marginLeft: "10px",
+                            }}
+                            onClick={handelresetpass}
+                            title="Reset"
+                            onMouseOver={(e) => {
+                              e.currentTarget.style.transform = "scale(1.4)";
+                            }}
+                            onMouseOut={(e) => {
+                              e.currentTarget.style.transform = "scale(1)";
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
+
+            <style jsx>{`
+              .profile-card {
+                border-radius: 15px;
+                border: none;
+                background: linear-gradient(135deg, #ececec, #ffffff);
+                transition: transform 0.3s ease;
+              }
+              .profile-card:hover {
+                transform: translateY(-10px);
+              }
+              .card-body {
+                background: linear-gradient(to bottom right, #f7f9fc, #e2ebf0);
+                padding: 20px;
+              }
+              .table th {
+                width: 30%;
+                vertical-align: middle;
+                font-weight: bold;
+              }
+              .table td {
+                vertical-align: middle;
+              }
+              .text-primary {
+                color: #007bff;
+              }
+              .table-borderless th,
+              .table-borderless td {
+                border: none;
+              }
+              .fas {
+                margin-right: 10px;
+              }
+              .profile-card img {
+                transition: transform 0.3s ease;
+              }
+            `}</style>
           </div>
         </div>
       </section>

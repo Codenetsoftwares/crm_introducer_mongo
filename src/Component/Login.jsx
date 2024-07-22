@@ -37,7 +37,7 @@ const Login = () => {
           console.log(auth);
           auth.login();
           navigate("/welcome");
-          alert("Logged In");
+          toast.success("Logged In");
         }
       })
       .catch((err) => {
